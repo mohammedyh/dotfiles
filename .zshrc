@@ -100,6 +100,11 @@ if (( ${+terminfo[smkx]} )) && (( ${+terminfo[rmkx]} )); then
   zle -N zle-line-finish
 fi
 
+# [Ctrl-Delete] - delete whole forward-word
+bindkey -M emacs '^[[3;5~' kill-word
+bindkey -M viins '^[[3;5~' kill-word
+bindkey -M vicmd '^[[3;5~' kill-word
+
 # Start typing + [Up-Arrow] - fuzzy find history forward
 if [[ -n "${terminfo[kcuu1]}" ]]; then
   autoload -U up-line-or-beginning-search
