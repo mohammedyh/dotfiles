@@ -2,6 +2,9 @@ export LSCOLORS="Gxfxcxdxbxegedabagacad"
 export LESSHISTFILE=-
 export LESS="-R"
 
+autoload -Uz bashcompinit
+bashcompinit
+
 autoload -U colors && colors
 
 # Changing/making/removing directory
@@ -82,7 +85,7 @@ alias history="better_history"
 setopt hist_expire_dups_first # delete duplicates first when HISTFILE size exceeds HISTSIZE
 setopt hist_ignore_dups       # ignore duplicated commands history list
 setopt hist_ignore_space      # ignore commands that start with space
-setopt hist_verify            # show command with history expansion to user before running it
+# setopt hist_verify            # show command with history expansion to user before running it
 setopt share_history          # share command history data
 
 # End history file configuration
@@ -112,6 +115,8 @@ if [[ -n "${terminfo[kcuu1]}" ]]; then
   zle -N up-line-or-beginning-search
 
   bindkey -M emacs "${terminfo[kcuu1]}" up-line-or-beginning-search
+  # bindkey -M viins "${terminfo[kcuu1]}" up-line-or-beginning-search
+  # bindkey -M vicmd "${terminfo[kcuu1]}" up-line-or-beginning-search
 fi
 
 # Start typing + [Down-Arrow] - fuzzy find history backward
@@ -120,11 +125,15 @@ if [[ -n "${terminfo[kcud1]}" ]]; then
   zle -N down-line-or-beginning-search
 
   bindkey -M emacs "${terminfo[kcud1]}" down-line-or-beginning-search
+  # bindkey -M viins "${terminfo[kcud1]}" down-line-or-beginning-search
+  # bindkey -M vicmd "${terminfo[kcud1]}" down-line-or-beginning-search
 fi
 
 # [Shift-Tab] - move through the completion menu backwards
 if [[ -n "${terminfo[kcbt]}" ]]; then
   bindkey -M emacs "${terminfo[kcbt]}" reverse-menu-complete
+  # bindkey -M viins "${terminfo[kcbt]}" reverse-menu-complete
+  # bindkey -M vicmd "${terminfo[kcbt]}" reverse-menu-complete
 fi
 
 # Edit the current command line in $EDITOR
@@ -158,6 +167,7 @@ alias update_kitty="curl -L https://sw.kovidgoyal.net/kitty/installer.sh | sh /d
 alias pn="pnpm"
 alias art="php artisan"
 alias clear_dns_cache="sudo dscacheutil -flushcache; sudo killall -HUP mDNSResponder"
+alias cmdhelp="compgen -c | fzf | xargs tldr"
 
 alias gst="git status"
 alias ga="git add"
