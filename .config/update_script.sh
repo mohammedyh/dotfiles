@@ -37,6 +37,10 @@ fnm install --lts
 echo "\n${CYAN}Set new LTS version as default by running 'fnm default lts-latest' and remove old version${NOCOLOR}"
 echo "\n${CYAN}If a new version is installed, to activate pnpm run the following 'corepack enable' and 'corepack prepare pnpm@latest --activate'${NOCOLOR}"
 
+# Update Lazy-NVIM and Mason
+nvim --headless "+Lazy! sync" +qa
+nvim --headless "+MasonUpdate" +qa
+
 # Check for System, Safari, and App Store updates
 # echo "\n${CYAN}Check for System, Safari, and App Store updates${NOCOLOR}"
 # softwareupdate -ia
