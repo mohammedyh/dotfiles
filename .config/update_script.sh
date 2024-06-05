@@ -26,7 +26,13 @@ echo "\n${CYAN}Remove unused formulae and clear all Homebrew cache${NOCOLOR}"
 brew autoremove
 brew cleanup --prune=all -s
 
+# Update lazy.nvim plugins and Mason
+echo "\n${CYAN}Update lazy.nvim plugins and Mason${NOCOLOR}"
+nvim --headless "+Lazy! sync" +qa
+nvim --headless "+MasonUpdate" +qa
+
 # Clean cache and update TLDR pages
+echo "\n\n${CYAN}Clean cache and update TLDR pages${NOCOLOR}"
 tldr --clean-cache
 tldr --update
 
@@ -37,13 +43,12 @@ fnm install --lts
 echo "\n${CYAN}Set new LTS version as default by running 'fnm default lts-latest' and remove old version${NOCOLOR}"
 echo "\n${CYAN}If a new version is installed, to activate pnpm run the following 'corepack enable' and 'corepack prepare pnpm@latest --activate'${NOCOLOR}"
 
-# Update Lazy-NVIM and Mason
-nvim --headless "+Lazy! sync" +qa
-nvim --headless "+MasonUpdate" +qa
-
 # Check for System, Safari, and App Store updates
 # echo "\n${CYAN}Check for System, Safari, and App Store updates${NOCOLOR}"
 # softwareupdate -ia
+
+echo "\n${CYAN}Check system for potential (brew) problems${NOCOLOR}"
+brew doctor
 
 echo "\n${CYAN}Updates complete${NOCOLOR}"
 
