@@ -1,10 +1,13 @@
+#!/bin/zsh
+
 export LSCOLORS="Gxfxcxdxbxegedabagacad"
 export LESSHISTFILE=-
 export LESS="-R"
 
-autoload -Uz bashcompinit
-bashcompinit
+fpath+=(~/.config/zsh/zsh-completions)
 
+autoload -U compinit && compinit
+autoload -Uz bashcompinit && bashcompinit
 autoload -U colors && colors
 
 # Changing/making/removing directory
@@ -51,7 +54,6 @@ zstyle ":completion:*:cd:*" tag-order local-directories directory-stack path-dir
 # Use caching so that commands like apt and dpkg complete are useable
 zstyle ":completion:*" use-cache yes
 zstyle ":completion:*" cache-path $ZSH_CACHE_DIR
-
 # End completions
 
 # History file configuration
@@ -171,6 +173,7 @@ alias cmdhelp="compgen -c | fzf | xargs tldr"
 
 alias gst="git status"
 alias ga="git add"
+alias gapa="git add -p"
 alias gp="git push"
 alias gcl="git clone"
 alias glo="git log --oneline --decorate"
@@ -187,12 +190,12 @@ source ~/.config/zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source ~/.config/zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 eval "$(fnm env --use-on-cd)"
-eval "$(fzf --zsh)"
+source <(fzf --zsh)
 
-# Add Composer to PATH
+export FZF_ALT_C_OPTS="--walker-skip Library,Pictures,Music,.git,.bun,vendor,node_modules,target"
+
+# Add Composer and MySQL to PATH
 export PATH="$PATH:$HOME/.composer/vendor/bin"
-
-# DBngin MySQL
 export PATH=/Users/Shared/DBngin/mysql/8.0.33/bin:$PATH
 
 # pnpm completions
