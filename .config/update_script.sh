@@ -39,9 +39,15 @@ tldr --update
 # Install LTS version of Node
 echo "\n${CYAN}Install LTS version of Node${NOCOLOR}"
 echo "${CYAN}Current Node version: $(fnm current)${NOCOLOR}"
-fnm install --lts
-echo "\n${CYAN}Set new LTS version as default by running 'fnm default lts-latest' and remove old version${NOCOLOR}"
-echo "\n${CYAN}If a new version is installed, to activate pnpm run the following 'corepack enable' and 'corepack prepare pnpm@latest --activate'${NOCOLOR}"
+nodeInstallOutput=$(fnm install --lts 2>&1)
+
+if [[ $nodeInstallOutput != *"Version already installed"* ]] then
+	echo "\n${CYAN}Set new LTS version as default by running 'fnm default lts-latest' and remove old version${NOCOLOR}"
+	echo "\n${CYAN}If a new version is installed, to activate pnpm run the following 'corepack enable' and 'corepack prepare pnpm@latest --activate'${NOCOLOR}"
+else
+
+	echo "\n${CYAN}Latest Node version already installed${NOCOLOR}"
+fi
 
 # Check for System, Safari, and App Store updates
 # echo "\n${CYAN}Check for System, Safari, and App Store updates${NOCOLOR}"
