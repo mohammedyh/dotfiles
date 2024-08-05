@@ -1,6 +1,7 @@
 #!/bin/zsh
 
 CYAN="\033[1;36m"
+YELLOW="\033[1;33m"
 NOCOLOR="\033[0m"
 
 # Update npm and global packages
@@ -46,7 +47,7 @@ if [[ $nodeInstallOutput != *"Version already installed"* ]] then
 	echo "\n${CYAN}If a new version is installed, to activate pnpm run the following 'corepack enable' and 'corepack prepare pnpm@latest --activate'${NOCOLOR}"
 else
 
-	echo "\n${CYAN}Latest Node version already installed${NOCOLOR}"
+	echo "\n${YELLOW}Latest Node version already installed${NOCOLOR}"
 fi
 
 # Check for System, Safari, and App Store updates
