@@ -8,14 +8,26 @@ NOCOLOR="\033[0m"
 echo "${CYAN}Updating global npm packages${NOCOLOR}"
 npm update -g
 
-# Update bun
-echo "\n${CYAN}Updating bun${NOCOLOR}"
-bun upgrade
+# Clear corepack cache
+# echo "${CYAN}Clearing corepack cache${NOCOLOR}"
+# corepack cache clean
+
+# Update composer
+echo "\n${CYAN}Updating composer${NOCOLOR}"
+composer self-update
+
+# Update global composer packages
+echo "\n${CYAN}Updating global composer packages${NOCOLOR}"
+composer global update
 
 # Clear npm and pnpm cache
 echo "\n${CYAN}Clearing npm and pnpm cache${NOCOLOR}"
 pnpm store prune
 npm cache clean --force
+
+# Clear composer cache
+echo "\n${CYAN}Clearing composer cache${NOCOLOR}"
+composer clear-cache
 
 # Update Homebrew and formulae
 echo "\n${CYAN}Updating Homebrew and all formulae${NOCOLOR}"
@@ -27,10 +39,11 @@ echo "\n${CYAN}Remove unused formulae and clear all Homebrew cache${NOCOLOR}"
 brew autoremove
 brew cleanup --prune=all -s
 
-# Update lazy.nvim plugins and Mason
-echo "\n${CYAN}Update lazy.nvim plugins and Mason${NOCOLOR}"
+# Update Lazy plugins, Mason and Treesitter
+echo "\n${CYAN}Update Lazy plugins, Mason and Treesitter${NOCOLOR}"
 nvim --headless "+Lazy! sync" +qa
 nvim --headless "+MasonUpdate" +qa
+nvim --headless -c "TSUpdate" -c "qa"
 
 # Clean cache and update TLDR pages
 echo "\n\n${CYAN}Clean cache and update TLDR pages${NOCOLOR}"
@@ -43,10 +56,11 @@ echo "${CYAN}Current Node version: $(fnm current)${NOCOLOR}"
 nodeInstallOutput=$(fnm install --lts 2>&1)
 
 if [[ $nodeInstallOutput != *"Version already installed"* ]] then
-	echo "\n${CYAN}Set new LTS version as default by running 'fnm default lts-latest' and remove old version${NOCOLOR}"
-	echo "\n${CYAN}If a new version is installed, to activate pnpm run the following 'corepack enable' and 'corepack prepare pnpm@latest --activate'${NOCOLOR}"
+	echo $nodeInstallOutput
+	fnm default lts-latest
+	echo "\n${CYAN}Run 'fnm default lts-latest' and remove any old versions${NOCOLOR}"
+	echo "\n${CYAN}To activate pnpm run 'corepack enable' and 'corepack prepare pnpm@latest --activate'${NOCOLOR}"
 else
-
 	echo "\n${YELLOW}Latest Node version already installed${NOCOLOR}"
 fi
 
