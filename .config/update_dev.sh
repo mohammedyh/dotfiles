@@ -1,75 +1,74 @@
-#!/bin/zsh
+#!/bin/bash
 
 CYAN="\033[1;36m"
 YELLOW="\033[1;33m"
 NOCOLOR="\033[0m"
 
 # Update npm and global packages
-echo "${CYAN}Updating global npm packages${NOCOLOR}"
+printf "\n%bUpdating global npm packages%b\n" "$CYAN" "$NOCOLOR"
 npm update -g
 
 # Clear corepack cache
-# echo "${CYAN}Clearing corepack cache${NOCOLOR}"
+# printf "%bClearing corepack cache%b\n" "$CYAN" "$NOCOLOR"
 # corepack cache clean
 
 # Update composer
-echo "\n${CYAN}Updating composer${NOCOLOR}"
+printf "\n%bUpdating composer%b\n" "$CYAN" "$NOCOLOR"
 composer self-update
 
 # Update global composer packages
-echo "\n${CYAN}Updating global composer packages${NOCOLOR}"
+printf "\n%bUpdating global composer packages%b\n" "$CYAN" "$NOCOLOR"
 composer global update
 
 # Clear npm and pnpm cache
-echo "\n${CYAN}Clearing npm and pnpm cache${NOCOLOR}"
+printf "\n%bClearing npm and pnpm cache%b\n" "$CYAN" "$NOCOLOR"
 pnpm store prune
 npm cache clean --force
 
 # Clear composer cache
-echo "\n${CYAN}Clearing composer cache${NOCOLOR}"
+printf "\n%bClearing composer cache%b\n" "$CYAN" "$NOCOLOR"
 composer clear-cache
 
 # Update Homebrew and formulae
-echo "\n${CYAN}Updating Homebrew and all formulae${NOCOLOR}"
+printf "\n%bUpdating Homebrew and all formulae%b\n" "$CYAN" "$NOCOLOR"
 brew update
 brew upgrade
 
 # Remove unused formulae and clear Homebrew cache
-echo "\n${CYAN}Remove unused formulae and clear all Homebrew cache${NOCOLOR}"
+printf "\n%bRemove unused formulae and clear all Homebrew cache%b\n" "$CYAN" "$NOCOLOR"
 brew autoremove
 brew cleanup --prune=all -s
 
 # Update Lazy plugins, Mason and Treesitter
-echo "\n${CYAN}Update Lazy plugins, Mason and Treesitter${NOCOLOR}"
+printf "\n%bUpdate Lazy plugins, Mason and Treesitter%b\n" "$CYAN" "$NOCOLOR"
 nvim --headless "+Lazy! sync" +qa
 nvim --headless "+MasonUpdate" +qa
 nvim --headless -c "TSUpdate" -c "qa"
 
 # Clean cache and update TLDR pages
-echo "\n\n${CYAN}Clean cache and update TLDR pages${NOCOLOR}"
+printf "\n\n%bClean cache and update TLDR pages%b\n" "$CYAN" "$NOCOLOR"
 tldr --clean-cache
 tldr --update
 
 # Install LTS version of Node
-echo "\n${CYAN}Install LTS version of Node${NOCOLOR}"
-echo "${CYAN}Current Node version: $(fnm current)${NOCOLOR}"
+printf "\n%bInstalling LTS version of Node%b\n" "$CYAN" "$NOCOLOR"
+printf "%bCurrent Node version: $(fnm current)%b\n" "$CYAN" "$NOCOLOR"
 nodeInstallOutput=$(fnm install --lts 2>&1)
 
-if [[ $nodeInstallOutput != *"Version already installed"* ]] then
-	echo $nodeInstallOutput
+if [[ $nodeInstallOutput != *"Version already installed"* ]]; then
+	printf "%s" "$nodeInstallOutput"
 	fnm default lts-latest
-	echo "\n${CYAN}Run 'fnm default lts-latest' and remove any old versions${NOCOLOR}"
-	echo "\n${CYAN}To activate pnpm run 'corepack enable' and 'corepack prepare pnpm@latest --activate'${NOCOLOR}"
+	printf "\n%bRun 'fnm default lts-latest' and remove any old versions%b\n" "$CYAN" "$NOCOLOR"
+	printf "\n%bTo activate pnpm run 'corepack enable' and 'corepack prepare pnpm@latest --activate'%b\n" "$CYAN" "$NOCOLOR"
 else
-	echo "\n${YELLOW}Latest Node version already installed${NOCOLOR}"
+	printf "\n%bLatest Node version already installed%b\n" "$YELLOW" "$NOCOLOR"
 fi
 
 # Check for System, Safari, and App Store updates
-# echo "\n${CYAN}Check for System, Safari, and App Store updates${NOCOLOR}"
+# printf "\n%bCheck for System, Safari, and App Store updates%b\n" "$CYAN" "$NOCOLOR"
 # softwareupdate -ia
 
-echo "\n${CYAN}Check system for potential (brew) problems${NOCOLOR}"
+printf "\n%bCheck system for potential (brew) problems%b\n" "$CYAN" "$NOCOLOR"
 brew doctor
 
-echo "\n${CYAN}Updates complete${NOCOLOR}"
-
+printf "\n%bUpdates complete%b\n" "$CYAN" "$NOCOLOR"
