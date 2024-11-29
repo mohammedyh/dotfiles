@@ -1,0 +1,14 @@
+bradlc.vscode-tailwindcss
+dbaeumer.vscode-eslint
+editorconfig.editorconfig
+enkia.tokyo-night
+esbenp.prettier-vscode
+golang.go
+miguelsolorio.symbols
+mikestead.dotenv
+pmndrs.pmndrs
+raunofreiberg.vesper
+sdras.night-owl
+vincaslt.highlight-matching-tag
+yzhang.markdown-all-in-one
+

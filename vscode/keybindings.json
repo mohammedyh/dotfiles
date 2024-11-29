@@ -1,0 +1,63 @@
+// Place your key bindings in this file to override the defaults
+[
+	/**
+	 * Panel
+	 **/
+	{
+		"key": "cmd+t",
+		"command": "workbench.action.terminal.toggleTerminal"
+	},
+	/**
+	 * Emmet
+	 **/
+	{
+		"key": "cmd+m cmd+i",
+		"command": "editor.emmet.action.balanceIn",
+		"when": "editorTextFocus"
+	},
+	{
+		"key": "cmd+m cmd+o",
+		"command": "editor.emmet.action.balanceOut",
+		"when": "editorTextFocus"
+	},
+	{
+		"key": "cmd+m cmd+w",
+		"command": "editor.emmet.action.wrapWithAbbreviation",
+		"when": "editorTextFocus"
+	},
+	{
+		"key": "cmd+m cmd+m",
+		"command": "editor.emmet.action.matchTag",
+		"when": "editorTextFocus"
+	},
+	{
+		"key": "cmd+m cmd+r",
+		"command": "editor.emmet.action.updateTag",
+		"when": "editorTextFocus"
+	},
+	/**
+	 * File Explorer
+	 **/
+	{
+		"key": "cmd+n",
+		"command": "explorer.newFile",
+		"when": "explorerViewletVisible && filesExplorerFocus && !inputFocus"
+	},
+	{
+		"key": "shift+cmd+n",
+		"command": "explorer.newFolder",
+		"when": "explorerViewletVisible && filesExplorerFocus && !inputFocus"
+	},
+	{
+		"key": "cmd+r",
+		"command": "workbench.files.action.refreshFilesExplorer",
+		"when": "explorerViewletVisible && filesExplorerFocus && !inputFocus"
+	},
+	/**
+	 * Intellisense
+	 **/
+	{
+		"key": "cmd+k cmd+i",
+		"command": "namespaceResolver.import"
+	}
+]

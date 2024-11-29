@@ -1,0 +1,16 @@
+{
+	"Document Query Selector" : {
+		"prefix": "ds",
+		"body": "document.querySelector('$1')",
+	},
+
+	"Document Query Selector All" : {
+		"prefix": "dsa",
+		"body": "document.querySelectorAll('$1')",
+	},
+
+	"Console Log": {
+		"prefix": "clg",
+		"body": "console.log($1);"
+	}
+}

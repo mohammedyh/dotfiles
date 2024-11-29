@@ -1,0 +1,27 @@
+"$schema" = 'https://starship.rs/config-schema.json'
+
+add_newline = false
+
+[line_break]
+disabled = true
+
+[golang]
+disabled = true
+
+[nodejs]
+disabled = true
+
+[bun]
+disabled = true
+
+[php]
+disabled = true
+
+[lua]
+disabled = true
+
+[battery]
+disabled = true
+
+[package]
+disabled = true

@@ -1,0 +1,119 @@
+{
+  /**
+   * Better Defaults
+   **/
+  "diffEditor.ignoreTrimWhitespace": false,
+  "editor.emptySelectionClipboard": false,
+  "workbench.editor.enablePreview": false,
+  "window.newWindowDimensions": "inherit",
+  "files.trimTrailingWhitespace": true,
+  "editor.snippetSuggestions": "inline",
+  "editor.tabSize": 2,
+  "editor.insertSpaces": true,
+  "files.insertFinalNewline": true,
+  "files.trimFinalNewlines": true,
+  "workbench.sideBar.location": "right",
+  "workbench.statusBar.visible": false,
+  "editor.minimap.enabled": false,
+  "editor.guides.indentation": false,
+  "editor.lineNumbers": "off",
+  "editor.glyphMargin": false,
+  "editor.smoothScrolling": true,
+  "editor.cursorSmoothCaretAnimation": "on",
+  "editor.bracketPairColorization.enabled": true,
+  "workbench.layoutControl.enabled": false,
+  "explorer.compactFolders": false,
+
+  /**
+   * Silence the Noise
+   **/
+  "workbench.editor.showTabs": "single",
+  "editor.codeLens": false,
+  "window.commandCenter": false,
+  "scm.diffDecorations": "none",
+  "editor.matchBrackets": "never",
+  "breadcrumbs.enabled": false,
+  "workbench.tips.enabled": false,
+  "editor.colorDecorators": false,
+  "workbench.startupEditor": "none",
+  "editor.lightbulb.enabled": "off",
+  "editor.selectionHighlight": false,
+  "editor.overviewRulerBorder": false,
+  "editor.renderLineHighlight": "none",
+  "editor.occurrencesHighlight": "off",
+  "problems.decorations.enabled": false,
+  "editor.renderControlCharacters": false,
+  "editor.hideCursorInOverviewRuler": true,
+  "workbench.activityBar.location": "hidden",
+  "editor.gotoLocation.multipleReferences": "goto",
+  "editor.gotoLocation.multipleDefinitions": "goto",
+  "editor.gotoLocation.multipleDeclarations": "goto",
+  "workbench.editor.enablePreviewFromQuickOpen": false,
+  "editor.gotoLocation.multipleImplementations": "goto",
+  "editor.gotoLocation.multipleTypeDefinitions": "goto",
+  "editor.accessibilitySupport": "off",
+
+  /**
+   * Typography
+   **/
+  "workbench.colorTheme": "poimandres",
+  "workbench.iconTheme": "symbols",
+  "editor.fontFamily": "Dank Mono",
+  "editor.fontSize": 18,
+  "editor.lineHeight": 1.8,
+  "editor.wordWrap": "on",
+  "editor.suggestFontSize": 16,
+  "editor.suggestLineHeight": 32,
+  "terminal.integrated.fontSize": 17,
+  "terminal.integrated.lineHeight": 1.5,
+
+  /**
+   * Find
+   **/
+  "search.useIgnoreFiles": false,
+  "search.exclude": {
+    "**/public": true,
+    "**/node_modules": true,
+    "**/.next": true,
+    "**/.vercel": true,
+    "**/.contentlayer": true,
+    "**/.cache": true,
+    "**/dist": true,
+    "**/package-lock.json": true,
+    "**/pnpm-lock.yaml": true,
+  },
+
+  /**
+   * Formatting
+   **/
+  "emmet.includeLanguages": {
+    "javascript": "html"
+  },
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[javascriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "telemetry.telemetryLevel": "off",
+  "[html]": {
+    "javascript.suggest.enabled": true
+  },
+  "symbols.hidesExplorerArrows": true,
+
+  /**
+   * Go Config
+   **/
+  //  "go.diagnostic.vulncheck": "Imports", // enable the imports-based analysis by default.
+  "go.lintTool": "golangci-lint",
+  "go.lintFlags": ["--fast"],
+   "gopls": {
+    "ui.semanticTokens": true
+  }
+}
