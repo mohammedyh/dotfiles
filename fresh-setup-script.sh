@@ -7,8 +7,26 @@ printf "
   ${CYAN}Setup script to install apps and CLI utils on a fresh machine${NOCOLOR}
 "
 
-# Remove all default apps from dock
-defaults write "com.apple.dock" "persistent-apps" -array
+# Spotlight
+defaults -currentHost write com.apple.Spotlight MenuItemHidden -int 1
+
+# Dock
+defaults write com.apple.dock persistent-apps -array
+defaults write com.apple.dock minimize-to-application -bool true
+defaults write com.apple.dock show-recents -bool false
+
+# Finder
+defaults write com.apple.finder FXDefaultSearchScope -string "SCcf"
+defaults write com.apple.finder ShowStatusBar -bool true
+defaults write com.apple.finder ShowPathbar -bool true
+defaults write com.apple.finder AppleShowAllFiles -bool true
+defaults write com.apple.finder FXPreferredViewStyle -string "Nlsv"
+defaults write com.apple.finder FXEnableExtensionChangeWarning -bool false
+
+defaults write NSGlobalDomain AppleKeyboardUIMode -int 2
+defaults write NSGlobalDomain AppleShowAllExtensions -bool true
+
+killall Finder
 killall Dock
 
 # Install Homebrew
