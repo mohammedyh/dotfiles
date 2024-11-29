@@ -1,0 +1,19 @@
+[user]
+	name = mohammedyh
+	email = mohammedyousufhamid@gmail.com
+[color]
+	ui = true
+[push]
+	autoSetupRemote = true
+[status]
+	showUntrackedFiles = all
+[core]
+	pager = delta
+	editor = nvim
+[init]
+	defaultBranch = main
+[branch]
+	sort = -committerdate
+[delta]
+	line-numbers = true
+
