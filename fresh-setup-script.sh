@@ -56,49 +56,36 @@ brew install charmbracelet/tap/freeze
 brew install vhs
 
 # Browsers
-brew install --cask firefox
-brew install --cask google-chrome
+brew install --cask firefox --no-quarantine
+brew install --cask google-chrome --no-quarantine
 
 # Dev Apps
-brew install --cask visual-studio-code
-brew install --cask tableplus
-brew install --cask iterm2
-brew install --cask dbngin
-brew install --cask gitbutler
+brew install --cask visual-studio-code --no-quarantine
+brew install --cask tableplus --no-quarantine
+brew install --cask iterm2 --no-quarantine
+brew install --cask dbngin --no-quarantine
+brew install --cask gitbutler --no-quarantine
 
 # Notes Apps
-brew install --cask obsidian
-brew install --cask notion
-brew install --cask ticktick
+brew install --cask obsidian --no-quarantine
+brew install --cask notion --no-quarantine
+brew install --cask ticktick --no-quarantine
 
 # Util Apps
-brew install --cask raycast
-brew install --cask cleanshot
-brew install --cask screen-studio
-brew install --cask 1password
-brew install --cask protonvpn
+brew install --cask raycast --no-quarantine
+brew install --cask cleanshot --no-quarantine
+brew install --cask screen-studio --no-quarantine
+brew install --cask 1password --no-quarantine
+brew install --cask protonvpn --no-quarantine
 
 brew doctor
 
-# Disable analytics
+# Disable Brew and Go analytics
 go telemetry off
 brew analytics off
 
 # Install Node LTS Version
 fnm install --lts
-
-# Basic .gitconfig options
-echo '[user]
-        name = mohammedyh
-        email = mohammedyousufhamid@gmail.com
-[color]
-        ui = true
-[core]
-        pager = delta
-[init]
-        defaultBranch = main
-[branch]
-        sort = -committerdate' >>.gitconfig
 
 # Setup Git / GitHub
 gh auth login
@@ -120,6 +107,7 @@ printf "
 cp -R ~/Downloads/dotfiles/.config/* ~/.config
 rm -rf ~/.config/iterm2
 cp -f ~/Downloads/dotfiles/.zshrc $HOME
+cp -f ~/Downloads/dotfiles/.gitconfig $HOME
 
 cd ..
 
@@ -128,7 +116,7 @@ touch ~/.hushlogin
 
 # Install vscode extensions from list
 for extension in $(cat ./dotfiles/vscode/extensions.txt); do
-	code --install-extension $extension
+  code --install-extension $extension
 done
 
 # Copy vscode settings.json, keybindings.json and language snippets
