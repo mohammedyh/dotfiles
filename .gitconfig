@@ -3,17 +3,20 @@
 	email = mohammedyousufhamid@gmail.com
 [color]
 	ui = true
-[push]
-	autoSetupRemote = true
-[status]
-	showUntrackedFiles = all
 [core]
 	pager = delta
 	editor = nvim
 [init]
 	defaultBranch = main
+[status]
+	showUntrackedFiles = all
 [branch]
 	sort = -committerdate
+[commit]
+	verbose = true
+[push]
+	autoSetupRemote = true
 [delta]
 	line-numbers = true
-
+[interactive]
+	diffFilter = delta --color-only
