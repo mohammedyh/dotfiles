@@ -10,12 +10,24 @@
 	defaultBranch = main
 [status]
 	showUntrackedFiles = all
+[diff]
+	algorithm = histogram
+	mnemonicPrefix = true
+	renames = true
 [branch]
 	sort = -committerdate
+[fetch]
+	prune = true
+	pruneTags = true
+	all = true
+[tag]
+	sort = version:refname
 [commit]
 	verbose = true
 [push]
 	autoSetupRemote = true
+[pull]
+	rebase = true
 [delta]
 	line-numbers = true
 [interactive]
