@@ -37,6 +37,7 @@ eval "$(/opt/homebrew/bin/brew shellenv)"
 # Command Line Utils
 brew install fnm
 brew install bat
+brew install delta
 brew install eza
 brew install exiftool
 brew install composer
