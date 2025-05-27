@@ -186,7 +186,7 @@ source "$HOME/.config/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh"
 eval "$(fnm env --use-on-cd)"
 source <(fzf --zsh)
 
-export FZF_ALT_C_OPTS="--walker-skip Library,Pictures,Music,.git,.bun,vendor,node_modules,target,.local"
+export FZF_ALT_C_OPTS="--walker-skip Library,Pictures,Music,.git,.bun,vendor,node_modules,target,.local --walker-root $HOME"
 export FZF_CTRL_T_OPTS="--walker-skip Library,Pictures,Music,.git,.bun,vendor,node_modules,target,.local"
 
 # Add Go bin, Composer and MySQL to PATH

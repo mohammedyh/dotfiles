@@ -1,4 +1,4 @@
-#!/bin/zsh
+#!/usr/bin/env bash
 
 CYAN="\033[1;36m"
 NOCOLOR="\033[0m"
