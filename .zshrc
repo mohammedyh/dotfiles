@@ -161,7 +161,7 @@ alias pn="pnpm"
 alias art="php artisan"
 alias tinker="php artisan tinker"
 alias clear_dns_cache="sudo dscacheutil -flushcache; sudo killall -HUP mDNSResponder"
-alias cmdhelp="compgen -c | fzf | xargs tldr"
+alias cmdhelp='compgen -c | fzf --style minimal --preview-window=right,70% --preview 'tldr --color always {}' | xargs tldr'
 
 alias gst="git status"
 alias ga="git add"
