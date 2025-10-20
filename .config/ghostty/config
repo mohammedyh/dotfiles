@@ -1,0 +1,30 @@
+theme = Rose Pine
+# theme = TokyoNight
+
+shell-integration-features = no-cursor, no-sudo
+
+# font (disable ligatures)
+font-family = Dank Mono
+font-size = 17
+font-feature = -calt, -liga, dlig
+
+# window
+window-width = 106
+window-height = 26
+window-padding-x = 12
+window-padding-y = 4
+
+quick-terminal-position = center
+
+# cells (letter spacing, line height)
+adjust-cell-width = -1
+adjust-cell-height = 5
+adjust-underline-position = 2
+
+# mac specific settings
+macos-titlebar-style = tabs
+macos-icon = xray
+
+# keybinds
+keybind = option+c=esc:c
+
