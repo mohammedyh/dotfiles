@@ -14,8 +14,6 @@ window-height = 26
 window-padding-x = 12
 window-padding-y = 4
 
-quick-terminal-position = center
-
 # cells (letter spacing, line height)
 adjust-cell-width = -1
 adjust-cell-height = 5
