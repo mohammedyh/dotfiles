@@ -25,3 +25,7 @@ disabled = true
 
 [package]
 disabled = true
+
+[git_branch]
+symbol = " "
+
