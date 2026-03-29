@@ -7,19 +7,16 @@ GREEN="\033[32m"
 BLUE_HIGHLIGHT="\033[34;7m"
 BLUE="\033[34m"
 NOCOLOR="\033[0m"
+binaries=$(fd . "$HOME/go/bin" -E 'golangci-lint')
 
-printf "%b Updating Go binaries %b\n\n" "$BLUE_HIGHLIGHT" "$NOCOLOR"
+printf "\n%b Updating Go binaries %b\n\n" "$BLUE_HIGHLIGHT" "$NOCOLOR"
 
-for bin in $(ls $HOME/go/bin); do
-  if [ "$bin" == "golangci-lint" ]; then
-    continue
-  fi
-
-  printf "%bUpdating $bin%b\n" "$GREEN" "$NOCOLOR"
-  path=$(go version -m "$HOME/go/bin/$bin" | rg 'path' --stop-on-nonmatch | awk '{print $2}')
+for bin in $binaries; do
+  printf "%bUpdating %s%b\n" "$GREEN" "$(basename $bin)" "$NOCOLOR"
+  path=$(go version -m "$bin" | rg 'path' --stop-on-nonmatch | awk '{print $2}')
 
   if [ -z "$path" ]; then
-      $printf "%bCouldn't get path for binary%b\n" "$RED" "$NOCOLOR"
+      $printf "%bBinary path not found%b\n" "$RED" "$NOCOLOR"
       exit 1
   fi
 
