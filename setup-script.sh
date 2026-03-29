@@ -53,22 +53,25 @@ brew install php
 brew install ripgrep
 brew install starship
 brew install tlrc
+brew install tokei
 brew install mailpit
-brew install charmbracelet/tap/freeze
 brew install vhs
-brew install zoxide
+brew install ffmpeg
 
+# Apps - manual install preferred to ensure arm64 builds over universal
 export HOMEBREW_CASK_OPTS="--no-quarantine"
 # Browsers
-brew install --cask firefox
-brew install --cask google-chrome
+brew install --cask zen
+brew install --cask helium-browser
 
 # Dev Apps
 brew install --cask visual-studio-code
+brew install --cask cursor
 brew install --cask tableplus
-brew install --cask iterm2
+brew install --cask ghostty
 brew install --cask dbngin
 brew install --cask gitbutler
+brew install --cask yaak
 
 # Notes Apps
 brew install --cask obsidian
@@ -102,21 +105,15 @@ printf "
 cd "$HOME/Downloads"
 gh repo clone mohammedyh/dotfiles
 
-# Copy iTerm2 config / preferences
-cp -f "$HOME/Downloads/dotfiles/.config/iterm2/com.googlecode.iterm2.plist" "$HOME/Library/Preferences"
-
-# Copy .config folder
 printf "
   ${CYAN}Copying files in .config/ and .zshrc to $HOME${NOCOLOR}
 "
 cp -r "$HOME/Downloads/dotfiles/.config/*" "$HOME/.config"
-rm -rf "$HOME/.config/iterm2"
 cp -f "$HOME/Downloads/dotfiles/.zshrc" $HOME
 cp -f "$HOME/Downloads/dotfiles/.gitconfig" $HOME
 
 cd ../
 
-rm -rf "$HOME/Downloads/dotfiles"
 touch "$HOME/.hushlogin"
 
 # Copy vscode settings.json, keybindings.json and language snippets
@@ -124,19 +121,23 @@ cp -f "$HOME/Downloads/dotfiles/vscode/settings.json" "$HOME/Library/Application
 cp -f "$HOME/Downloads/dotfiles/vscode/keybindings.json" "$HOME/Library/Application\ Support/Code/User/"
 cp -rf "$HOME/Downloads/dotfiles/vscode/snippets" "$HOME/Library/Application\ Support/Code/User/"
 
+cp -f "$HOME/Downloads/dotfiles/vscode/settings.json" "$HOME/Library/Application\ Support/Cursor/User/"
+cp -f "$HOME/Downloads/dotfiles/vscode/keybindings.json" "$HOME/Library/Application\ Support/Cursor/User/"
+cp -rf "$HOME/Downloads/dotfiles/vscode/snippets" "$HOME/Library/Application\ Support/Cursor/User/"
+
 # Install vscode extensions from list
 for extension in $(cat ./dotfiles/vscode/extensions.txt); do
   code --install-extension $extension
+  cursor --install-extension $extension
 done
 
-# Install Node package runner helper
+# Install Node script runner helper
 go install "github.com/mohammedyh/npr@latest"
 
-# Import raycast settings using .rayconfig export file
 printf "
   ${CYAN}Next steps:
 
-  - Add fonts
+  - Install fonts
   - Import Raycast config
   ${NOCOLOR}
 "
