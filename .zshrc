@@ -195,4 +195,6 @@ export PATH="$PATH:$HOME/go/bin"
 export PATH="$PATH:$HOME/.composer/vendor/bin"
 export PATH=/Users/Shared/DBngin/mysql/8.0.33/bin:$PATH
 
+export BAT_THEME='Catppuccin Mocha'
+
 eval "$(starship init zsh)"
